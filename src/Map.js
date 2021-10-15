@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import './Map.css';
 // TODO: Import the incident file until env is implemented
-import data from './data/F01705150050.json'
+// import data from './data/F01705150050.json'
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZWJveWVyYiIsImEiOiJja3VyMTg5MHUzam40MnZ0NGRobmg4YnpuIn0.2_XHiBl4meDJZQnmHFoBhg';
@@ -14,7 +14,7 @@ const Map = () => {
   // TODO parse data file for initial location of incident
   const [lng, setLng] = useState(-77.440624);
   const [lat, setLat] = useState(37.541885);
-  const [zoom, setZoom] = useState(11);
+  const [zoom, setZoom] = useState(12);
 
   // Initialize map when component mounts
   useEffect(() => {
@@ -27,6 +27,8 @@ const Map = () => {
 
     // Add navigation control (the +/- zoom buttons)
     map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+
+    // TODO Add weather popup
 
     map.on('move', () => {
       setLng(map.getCenter().lng.toFixed(4));
